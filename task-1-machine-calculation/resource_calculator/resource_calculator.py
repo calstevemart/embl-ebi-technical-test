@@ -1,5 +1,4 @@
-class ResourceAllocator:
-
+class ResourceCalculator:
     def __init__(self, process_time_spans):
         self.process_time_spans = process_time_spans
 
@@ -33,7 +32,3 @@ class ResourceAllocator:
             if process[0] > process[1]:
                 return False
         return True
-
-
-
-
