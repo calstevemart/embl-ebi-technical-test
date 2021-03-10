@@ -66,9 +66,9 @@ function load (x: any, chart: any) {                        // load chart data
           chart.load(set);
           set.add([
             // 
-              "specktackle/resources/data1.json",
-              "specktackle/resources/data2.json",
-              "specktackle/resources/data3.json"
+              "https://bitbucket.org/sbeisken/specktackle/src/master/resources/data3.json",
+              "https://bitbucket.org/sbeisken/specktackle/src/master/resources/data2.json",
+              "https://bitbucket.org/sbeisken/specktackle/src/master/resources/data3.json"
           ]);
           break;
       case 6:                            // MS
@@ -90,7 +90,7 @@ function load (x: any, chart: any) {                        // load chart data
               .title("id");
           chart.load(array);   
           array.add([
-              "resources/single_point_2.json"
+              "https://www.ebi.ac.uk/metabolights/webservice/compounds/spectra/10935/json"
           ]);
           break;
       case 8:                             // difference chart
@@ -147,23 +147,22 @@ export class GraphWrapperComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log('cmponent loadeded');
-    (function series () {                    // Chromatogram stub
-      $("#stgraph").empty();
-      $("#adddata").removeAttr("disabled")
-          .attr("onclick","load(3, chart)");
-          
-      let chart = st.chart
-          .series()
-          .legend(true)
-          .labels(true)
-          .xlabel("Time [s]")
-          .ylabel("Abundance")
-          .title("Chromatogram")
-          .margins([80, 80, 80, 120]);
-      chart.render("#stgraph");
-      load(3, chart)
-  })(/*st*/)
+  (function nmr () {                    // Chromatogram stub
+    $("#stgraph").empty();
+    $("#adddata").removeAttr("disabled")
+        .attr("onclick","load(3, chart)");
+        
+    let chart = st.chart
+        .nmr()
+        .legend(true)
+        .labels(true)
+        .xlabel("ppm")
+        .ylabel("Intensity")
+        .title("Spectra")
+        .margins([80, 80, 80, 120]);
+    chart.render("#stgraph");
+    load(7, chart)
+})(/*st*/)
   }
 
 }
