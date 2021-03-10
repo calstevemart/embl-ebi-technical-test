@@ -1,13 +1,29 @@
 <div class="container mt-5">
     <!-- Content here -->
     <div class="card rounded-0">
-        <div class="card-header">
-            Spectra Graph
-        </div>
-        <div class="card-body">
-            <div id="wrap">
-                <div id="stgraph" class="stgraph" style="min-height: 500px; min-width: 500px;"></div>
+        <div class="card-header ">
+            <div class="row">
+                <div class="col-2 pt-2 ">
+                    Spectra Graph
+                </div>
+                <div class="col-10">
+                    <ul class="nav nav-tabs border-0 justify-content-end">
+                        <li class="nav-item border-bottom">
+                            <a class="nav-link active" href="#">MS Graph</a>
+                        </li>
+                        <li class="nav-item border-bottom">
+                            <a class="nav-link" href="#">NMR Graph</a>
+                        </li>
+
+                    </ul>
+                </div>
             </div>
         </div>
+        <div class="card-body">
+            <div *ngIf="false" id="wrap">
+                <div id="stgraph" class="stgraph" style="min-height: 500px; min-width: 500px;"></div>
+            </div>
+            <app-spectra-graph></app-spectra-graph>
+        </div>
     </div>
-  </div>
+</div>

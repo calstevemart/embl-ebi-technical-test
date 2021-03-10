@@ -3,10 +3,8 @@ import { Component, OnInit } from '@angular/core';
 declare var st: any;
 declare var $: any;
 declare var d3: any;
-declare var chart: any;
-console.log(d3);
 
-/**Pulled from the example code in index.html from the specktackle bitbucket. I make no assertion
+/**Function pulled from the example code in index.html from the specktackle bitbucket. I make no assertion
  * to have been the original author.
  */
 function load (x: any, chart: any) {                        // load chart data
@@ -58,14 +56,13 @@ function load (x: any, chart: any) {                        // load chart data
           set.add("resources/nmr2d.json");
           break;
       case 3:
-          console.log('hit');                             // Chromatogram
+                             // Chromatogram
           var set = st.data.set()
               .x("peaks.mz")
               .y("peaks.intensity")
               .title("spectrumId");
           chart.load(set);
           set.add([
-            // 
               "https://bitbucket.org/sbeisken/specktackle/src/master/resources/data3.json",
               "https://bitbucket.org/sbeisken/specktackle/src/master/resources/data2.json",
               "https://bitbucket.org/sbeisken/specktackle/src/master/resources/data3.json"
@@ -84,6 +81,7 @@ function load (x: any, chart: any) {                        // load chart data
           ]);
           break;
       case 7:                             // NMR
+        console.log('hit')
           var array = st.data.array()
               .xlimits(["xMin", "xMax"])
               .y("data")
@@ -162,7 +160,7 @@ export class GraphWrapperComponent implements OnInit {
         .margins([80, 80, 80, 120]);
     chart.render("#stgraph");
     load(7, chart)
-})(/*st*/)
+})()
   }
 
 }
