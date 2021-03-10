@@ -6,7 +6,9 @@ declare var d3: any;
 declare var chart: any;
 console.log(d3);
 
-
+/**Pulled from the example code in index.html from the specktackle bitbucket. I make no assertion
+ * to have been the original author.
+ */
 function load (x: any, chart: any) {                        // load chart data
   switch (x) {
       case 0:                            // MS

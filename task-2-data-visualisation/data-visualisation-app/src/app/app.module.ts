@@ -8,7 +8,7 @@ import { GraphsModule } from './core/features/graphs/graphs.module';
 import { CoreModule } from './core/core.module';
 import * as $ from "jquery";
 import * as d3 from 'd3';
-// import * as chart from 'chart.js'
+
 @NgModule({
   declarations: [
     AppComponent
