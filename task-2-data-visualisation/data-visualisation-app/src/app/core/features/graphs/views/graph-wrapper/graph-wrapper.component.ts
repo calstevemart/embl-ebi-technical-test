@@ -162,6 +162,7 @@ export class GraphWrapperComponent implements OnInit {
           .title("Chromatogram")
           .margins([80, 80, 80, 120]);
       chart.render("#stgraph");
+      load(3, chart)
   })(/*st*/)
   }
 
