@@ -76,7 +76,6 @@ function load(x: any, chart: any, url: string) {                        // load 
 
       chart.load(set);
       set.add([
-        /*"https://www.ebi.ac.uk/metabolights/webservice/beta/spectra/MTBLC15355/CCMSLIB00000578035" */
         url
       ]);
       break;
@@ -88,7 +87,6 @@ function load(x: any, chart: any, url: string) {                        // load 
       chart.load(array);
       array.add([
         url
-        /*"https://www.ebi.ac.uk/metabolights/webservice/compounds/spectra/10935/json"*/
       ]);
       break;
     case 8:                             // difference chart
@@ -149,7 +147,6 @@ export class SpectraGraphComponent implements OnInit, OnChanges {
   constructor() { }
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log('hit on changes');
     this.config.configOptions.forEach(option => {
       option.visible === true ? this.renderAnew(option.name) : null
     })
@@ -162,7 +159,6 @@ export class SpectraGraphComponent implements OnInit, OnChanges {
   }
 
   renderAnew(type: string){
-    console.log('hit render anew with + ' + type)
     switch(type) {
       case 'nmr':
         this.nmr();

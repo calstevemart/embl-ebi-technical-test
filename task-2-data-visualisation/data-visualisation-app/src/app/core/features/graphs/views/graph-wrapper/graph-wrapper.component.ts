@@ -24,17 +24,14 @@ export class GraphWrapperComponent implements OnInit {
   }
   trigger: number = 0;
 
-  constructor(public cd: ChangeDetectorRef) { 
+  constructor() { 
   }
 
   toggle(type: string) {
-    console.log('hit toggle with ' + type)
     this.graphConfig.configOptions.forEach(option => {
       option.name === type ? option.visible = true : option.visible = false
     })
-    console.log(this.graphConfig)
     this.trigger += 1;
-    this.cd.detectChanges();
   }
 
   ngOnInit(): void {

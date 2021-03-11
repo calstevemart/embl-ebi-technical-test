@@ -8,13 +8,12 @@
                 </div>
                 <div class="col-10">
                     <ul class="nav nav-tabs border-0 justify-content-end">
-                        <li (click)="toggle('ms')" class="nav-item border-bottom">
-                            <a class="nav-link active" >MS Graph</a>
+                        <li *ngFor="let option of graphConfig.configOptions">
+                            <a
+                            (click)="toggle(option.name)" 
+                            [ngClass]="{'active': option.visible}"
+                            class="nav-link">{{ option.name | uppercase }} Graph</a>
                         </li>
-                        <li (click)="toggle('nmr')" class="nav-item border-bottom">
-                            <a class="nav-link" >NMR Graph</a>
-                        </li>
-
                     </ul>
                 </div>
             </div>
