@@ -141,6 +141,7 @@ function load(x: any, chart: any, url: string) {                        // load 
 })
 export class SpectraGraphComponent implements OnInit, OnChanges {
   @Input() config: GraphConfig = {configOptions: []};
+  @Input() trigger: number = 0;
 
   msUrl: string = "https://www.ebi.ac.uk/metabolights/webservice/beta/spectra/MTBLC15355/CCMSLIB00000578035"
   nmrUrl: string = "https://www.ebi.ac.uk/metabolights/webservice/compounds/spectra/10935/json"
@@ -148,7 +149,7 @@ export class SpectraGraphComponent implements OnInit, OnChanges {
   constructor() { }
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log(changes);
+    console.log('hit on changes');
     this.config.configOptions.forEach(option => {
       option.visible === true ? this.renderAnew(option.name) : null
     })
@@ -161,6 +162,7 @@ export class SpectraGraphComponent implements OnInit, OnChanges {
   }
 
   renderAnew(type: string){
+    console.log('hit render anew with + ' + type)
     switch(type) {
       case 'nmr':
         this.nmr();

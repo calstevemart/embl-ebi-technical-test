@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { config } from 'rxjs';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { GraphConfig } from 'src/app/core/models/graph-config.model';
 
 
@@ -23,13 +22,19 @@ export class GraphWrapperComponent implements OnInit {
       }
     ]
   }
+  trigger: number = 0;
 
-  constructor() { }
+  constructor(public cd: ChangeDetectorRef) { 
+  }
 
   toggle(type: string) {
+    console.log('hit toggle with ' + type)
     this.graphConfig.configOptions.forEach(option => {
       option.name === type ? option.visible = true : option.visible = false
     })
+    console.log(this.graphConfig)
+    this.trigger += 1;
+    this.cd.detectChanges();
   }
 
   ngOnInit(): void {
