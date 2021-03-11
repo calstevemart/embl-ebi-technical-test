@@ -8,10 +8,10 @@
                 </div>
                 <div class="col-10">
                     <ul class="nav nav-tabs border-0 justify-content-end">
-                        <li class="nav-item border-bottom">
+                        <li (click)="toggle('ms')" class="nav-item border-bottom">
                             <a class="nav-link active" href="#">MS Graph</a>
                         </li>
-                        <li class="nav-item border-bottom">
+                        <li (click)="toggle('nmr')" class="nav-item border-bottom">
                             <a class="nav-link" href="#">NMR Graph</a>
                         </li>
 
@@ -23,7 +23,7 @@
             <div *ngIf="false" id="wrap">
                 <div id="stgraph" class="stgraph" style="min-height: 500px; min-width: 500px;"></div>
             </div>
-            <app-spectra-graph></app-spectra-graph>
+            <app-spectra-graph [config]="graphConfig"></app-spectra-graph>
         </div>
     </div>
 </div>

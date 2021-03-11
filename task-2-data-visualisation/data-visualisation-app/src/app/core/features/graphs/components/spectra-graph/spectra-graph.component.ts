@@ -1,4 +1,5 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { GraphConfig } from 'src/app/core/models/graph-config.model';
 
 declare var st: any;
 declare var $: any;
@@ -139,8 +140,7 @@ function load(x: any, chart: any, url: string) {                        // load 
   styleUrls: ['./spectra-graph.component.less']
 })
 export class SpectraGraphComponent implements OnInit, OnChanges {
-  @Input() msVisible: boolean = true;
-  @Input() nmrVisible: boolean = false;
+  @Input() config: GraphConfig = {configOptions: []};
 
   msUrl: string = "https://www.ebi.ac.uk/metabolights/webservice/beta/spectra/MTBLC15355/CCMSLIB00000578035"
   nmrUrl: string = "https://www.ebi.ac.uk/metabolights/webservice/compounds/spectra/10935/json"
@@ -149,23 +149,27 @@ export class SpectraGraphComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     console.log(changes);
-    switch(this.msVisible) {
-      case true:
-        this.ms();
-        break;
-      case false:
-        this.nmr();
-        break;
-    }
+    this.config.configOptions.forEach(option => {
+      option.visible === true ? this.renderAnew(option.name) : null
+    })
   }
 
   ngOnInit(): void {
-    switch(this.msVisible) {
-      case true:
+    this.config.configOptions.forEach(option => {
+      option.visible === true ? this.renderAnew(option.name) : null
+    })
+  }
+
+  renderAnew(type: string){
+    switch(type) {
+      case 'nmr':
+        this.nmr();
+        break;
+      case 'ms':
         this.ms();
         break;
-      case false:
-        this.nmr();
+      default:
+        console.error('Unexpected Graph Type. Check your configuration: [' + type +']')
         break;
     }
   }
