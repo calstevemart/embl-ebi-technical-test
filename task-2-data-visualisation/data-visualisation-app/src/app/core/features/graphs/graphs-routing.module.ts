@@ -2,7 +2,7 @@ import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { GraphWrapperComponent } from "./views/graph-wrapper/graph-wrapper.component";
 
-const routes: Routes = [
+export const routes: Routes = [
     {
         path: '',
         component: GraphWrapperComponent,

@@ -1,12 +1,18 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { GraphConfig } from 'src/app/core/models/graph-config.model';
+import { GraphConfig, IndividualGraphConfig } from 'src/app/core/models/graph-config.model';
 
+/**Pure js library variable declarations */
 declare var st: any;
 declare var $: any;
 declare var d3: any;
 
-/**Function pulled from the example code in index.html from the specktackle bitbucket. I make no assertion
+
+/**
+ * Function pulled from the example code in index.html from the specktackle bitbucket. I make no assertion
  * to have been the original author.
+ * @param x - Type of chart to load.
+ * @param chart - chart reference used to render chart and bind data. 
+ * @param url - the url from which we fetch data to bind to the chart.
  */
 function load(x: any, chart: any, url: string) {                        // load chart data
   switch (x) {
@@ -132,34 +138,52 @@ function load(x: any, chart: any, url: string) {                        // load 
   $("#adddata").attr('disabled', 'disabled');
 };
 
+/**
+ * Spectra Graph component to handle graph rendering.
+ */
 @Component({
   selector: 'app-spectra-graph',
   templateUrl: './spectra-graph.component.html',
   styleUrls: ['./spectra-graph.component.less']
 })
 export class SpectraGraphComponent implements OnInit, OnChanges {
+  /**Config object that contains the configuration options for each graph type */
   @Input() config: GraphConfig = {configOptions: []};
+  /**Manual trigger for change detection as changes to config object not registered in ChangeDetectorRef */
   @Input() trigger: number = 0;
-
+  /**The currently selected configuration object. Primarily used for axis rendering in template. */
+  currentlySelected: any;
+  /**Default url for MS graph. */
   msUrl: string = "https://www.ebi.ac.uk/metabolights/webservice/beta/spectra/MTBLC15355/CCMSLIB00000578035"
+  /**Default url for MS graph. */
   nmrUrl: string = "https://www.ebi.ac.uk/metabolights/webservice/compounds/spectra/10935/json"
 
   constructor() { }
 
+  /**
+   * OnChanges lifecycle hook to continually rerender graph based on user selection.
+   * @param changes - SimpleChanges object, unused.
+   */
   ngOnChanges(changes: SimpleChanges): void {
     this.config.configOptions.forEach(option => {
-      option.visible === true ? this.renderAnew(option.name) : null
+      option.visible === true ? this.renderAnew(option) : null
     })
   }
 
+  /**OnInit lifecycle hook to initially render the graph. */
   ngOnInit(): void {
     this.config.configOptions.forEach(option => {
-      option.visible === true ? this.renderAnew(option.name) : null
+      option.visible === true ? this.renderAnew(option) : null
     })
   }
 
-  renderAnew(type: string){
-    switch(type) {
+  /**
+   * Selects which render method to call based on current config.
+   * @param option - The currently set config option.
+   */
+  renderAnew(option: IndividualGraphConfig){
+    this.currentlySelected = option;
+    switch(option.name) {
       case 'nmr':
         this.nmr();
         break;
@@ -167,11 +191,15 @@ export class SpectraGraphComponent implements OnInit, OnChanges {
         this.ms();
         break;
       default:
-        console.error('Unexpected Graph Type. Check your configuration: [' + type +']')
+        console.error('Unexpected Graph Type. Check your configuration: [' + option.name +']')
         break;
     }
   }
 
+  /**
+   * Wrapper method around pure js function to instantiate, render and load data to the MS graph.
+   * @param url - The url to fetch data from for the MS graph.
+   */
   ms(url: string = this.msUrl) {
     (function ms() {                    //ms stub
       $("#stgraph").empty();
@@ -191,6 +219,10 @@ export class SpectraGraphComponent implements OnInit, OnChanges {
     })()
   }
 
+  /**
+   * Wrapper method around pure js function to instantiate, render and load data to the NMR graph.
+   * @param url - The url to fetch data from for the NMR graph.
+   */
   nmr(url: string = this.nmrUrl) {
     (function nmr() {                    // nmr stub
       $("#stgraph").empty();
