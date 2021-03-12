@@ -13,7 +13,6 @@ done
 
 filename=$config
 len=$(echo ${#filename})
-n=1
 # Only try to read if an argument for config has been supplied.
 if [ $len -gt 0 ]
 then
@@ -21,7 +20,6 @@ then
 # for each rule, split it into replacee and replacement
 # and then use the stream editor 'sed' utility to perform the replacement
     while read line; do
-        n=$((n+1))
         read -a strarr <<< $line
         replacee="${strarr[0]}"
         replacement="${strarr[1]}"

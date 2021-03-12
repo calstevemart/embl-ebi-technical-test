@@ -3,3 +3,5 @@
 < lessthan
 > greaterthan
 + plus
+= equals
+@ at
