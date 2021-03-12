@@ -7,8 +7,9 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
-  },
+    "e2e": "ng e2e",
+    "format": "prettier --config ./.prettierrc --list-different \"src/{app,environments,assets}/**/*{.ts,.js,.json,.css,.scss}\""
+    },
   "private": true,
   "dependencies": {
     "@angular/animations": "~11.2.4",
@@ -25,6 +26,7 @@
     "chart.js": "^2.9.4",
     "d3": "3.5.15",
     "jquery": "^3.6.0",
+    "prettier": "^2.2.1",
     "rxjs": "~6.6.0",
     "smash": "^0.0.15",
     "tslib": "^2.0.0",
