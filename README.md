@@ -1,7 +1,7 @@
 # embl-ebi-technical-test
 A repo to house my solutions to the three technical tests set by the embl-ebi.
 
-## Task 1
+## Task 1 - Machine Resource Allocation
 The solution to the first task was completed in python. It can be found in `embl-ebi-technical-test/task-1-machine-calculation/`. 
 It requires a virtual environment to run, as it makes use of several 3rd party packages.
 * To create a virtual environment via the terminal, navigate to 
@@ -15,7 +15,7 @@ test_2 = [(7, 9), (2, 4)]`. To test the program with different time spans, you c
 There are also some unit tests written using [pytest](https://docs.pytest.org/en/stable/) that can be run by running `pytest` in the project directory. I also made use of the [black](https://black.readthedocs.io/en/stable/)
 formatter to format the project.
 
-## Task 2
+## Task 2 - Data Visualisation
 For the second task of visualising sets of input spectrography data, I opted to create an angular webapp. It can be found in `embl-ebi-technical-test/task-2-data-visualisation`.
 It requires [Node / NPM](https://www.npmjs.com/get-npm) and the [Angular CLI](https://www.npmjs.com/package/@angular/cli) to run. Once these are installed, you will need to install the project in order to run it.
 * To install the project, navigate to the `embl-ebi-technical-test/task-2-data-visualisation/` and run `npm install`. This will install all 3rd party dependencies.
@@ -26,7 +26,7 @@ Initial attempts at trying to get the library working out the box, or finding co
 
 There are also some unit tests written in [Jasmine](https://jasmine.github.io/). These can be run by running `ng test` in the project directory.
 
-## Task 3
+## Task 3 - Filename Sanitisation
 For the third task of sanitising input filenames, I wrote a bash script that takes a filename and a location of a config file as arguments. In order to run this bash script as an executable, you will need to run `chmod +x sanitise.sh` in order
 to make it executable.
 
