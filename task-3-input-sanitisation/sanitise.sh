@@ -36,7 +36,7 @@ for char in ${illegalCharacters[@]}; do
 done    
 
 lenOutput=$(echo ${#inputString})
-if [ $len -gt 0 ]
+if [ $lenOutput -gt 0 ]
 then
     echo "Post sanitisation: $inputString"
 else
