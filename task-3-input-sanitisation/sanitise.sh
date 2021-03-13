@@ -23,7 +23,6 @@ then
         read -a strarr <<< $line
         replacee="${strarr[0]}"
         replacement="${strarr[1]}"
-        echo $replacee $replacement
         inputString=$(echo "$inputString" | sed "s/$replacee/$replacement/g")
     done < $config
 fi
