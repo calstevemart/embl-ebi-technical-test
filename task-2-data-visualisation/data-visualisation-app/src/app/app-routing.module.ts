@@ -7,14 +7,24 @@ export const routes: Routes = [
     children: [
       {
         path: 'graphs',
-        loadChildren: () => import('./core/features/graphs/graphs.module').then((m) => m.GraphsModule)
-      }
-    ]
-  }
+        loadChildren: () =>
+          import('./core/features/graphs/graphs.module').then(
+            (m) => m.GraphsModule
+          ),
+      },
+      {
+        path: 'terminal',
+        loadChildren: () =>
+          import('./core/features/terminal/terminal.module').then(
+            (m) => m.TerminalModule
+          ),
+      },
+    ],
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
