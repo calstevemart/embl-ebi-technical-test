@@ -35,4 +35,11 @@ for char in ${illegalCharacters[@]}; do
     inputString=$(echo "$inputString" | tr -d $char)
 done    
 
-echo "Post sanitisation: $inputString"
+lenOutput=$(echo ${#inputString})
+if [ $len -gt 0 ]
+then
+    echo "Post sanitisation: $inputString"
+else
+    echo "No input filename string supplied. Basic command structure: ./sanitise.sh -i 'input string in quotes' -c rules.txt ( -c config flag optional)"
+fi
+
