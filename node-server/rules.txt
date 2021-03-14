@@ -1,0 +1,7 @@
+! exclm
+? qstn
+< lessthan
+> greaterthan
++ plus
+= equals
+@ at
