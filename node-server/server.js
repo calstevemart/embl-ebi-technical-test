@@ -15,7 +15,6 @@ app.get('/', (req, res) => {
 })
 
 app.post('/sanitise', (req, res) => {
-    console.log(req.body);
     whitelist = [
         "./sanitise.sh",
         "ls",
