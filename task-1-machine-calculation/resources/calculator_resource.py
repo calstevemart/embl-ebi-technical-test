@@ -18,9 +18,7 @@ class CalculatorResource(Resource):
     )
     def post(self):
         try:
-            thing = request
             necessary_resources = CalculatorService.calculate_machines(request.json)
-            pass
         except Exception as e:
             msg = "An unexpected error occurred: {0}".format(e)
             abort(500, message=msg)

@@ -13,7 +13,10 @@ class CalculatorService:
             # strip the brackets so we can cast to a tuple
             span = span.replace("(", "")
             span = span.replace(")", "")
-            new_tuple = tuple(map(int, span.split(',')))
+            try:
+                new_tuple = tuple(map(int, span.split(',')))
+            except Exception as e:
+                new_tuple = tuple(map(int, span.split(', ')))
             tuples.append(new_tuple)
         rc = ResourceCalculator(tuples)
 
