@@ -1,7 +1,7 @@
 # embl-ebi-technical-test
 A repo to house my solutions to the three technical tests set by the embl-ebi.
 
-*A live version of the UI can be viewed here:* http://embl-ebi-ui.s3-website.eu-west-2.amazonaws.com/home This UI utilises AWS services for hosting. This is intended to be an ease of use solution, and all tasks can still be run individually as per the instructions below.
+*A live version of the UI with all 3 task solutions can be viewed here:* http://embl-ebi-ui.s3-website.eu-west-2.amazonaws.com/home This UI utilises AWS services for hosting. This is intended to be an ease of use solution, and all tasks can still be run individually as per the instructions below.
 
 ## Local UI
 The solution to all 3 tasks can be viewed on the UI housed in task-2-data-visualisation. You will have to start the flask server for the machine resource calculator, and the node server for the bash script to run on. Note: The terminal view in the UI does not feature a fully featured terminal. **In order to run the bash script with the config flag enabled, you will have to run the bash script locally.** More information on task 3 is viewable in the Task 3 section.
