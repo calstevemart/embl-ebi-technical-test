@@ -1,0 +1,16 @@
+<div class="container mt-5">
+    <!-- Content here -->
+    <div class="card rounded-0">
+        <div class="card-header ">
+            <div class="row">
+                <div class="col-4 pt-2 ">
+                    <b>Task 1 - Machine Calculator</b>
+                </div>
+
+            </div>
+        </div>
+        <div class="card-body">
+            <app-machine-calculator-input [serviceResult]="serviceResult" (newTupleEvent)="handleNewTuple($event)"></app-machine-calculator-input>
+        </div>
+    </div>
+</div>

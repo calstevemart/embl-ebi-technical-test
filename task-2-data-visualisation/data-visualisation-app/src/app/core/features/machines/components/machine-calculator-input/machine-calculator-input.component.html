@@ -1,0 +1,12 @@
+<div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="basic-addon1">Wrap Time span tuples in brackets like so: (1,2),(3,4)</span>
+    </div>
+    <input [(ngModel)]="userInput" type="text" class="form-control" placeholder="Time spans" aria-label="Username" aria-describedby="basic-addon1">
+    <div class="input-group-append">
+        <button type="button" (click)="triggerNewTupleEvent()" class="btn btn-success">Send</button>
+    </div>
+  </div>
+  <div  *ngIf="serviceResult !== ''"class="mt-4">
+    The total number of machines needed is : <b>{{serviceResult}}</b>
+  </div>

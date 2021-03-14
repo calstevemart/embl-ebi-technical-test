@@ -1,0 +1,35 @@
+<div class="container mt-5">
+    <!-- Content here -->
+    <div class="card rounded-0">
+        <div class="card-header ">
+            <div class="row">
+                <div class="col-4 pt-2 ">
+                    <b>Landing Page</b>
+                </div>
+
+            </div>
+        </div>
+        <div class="card-body">
+           <p> Hello, this webapp serves as a way of viewing all the solutions to the EMBL-EBI technical tests
+            that I ( Callum Martin ) have produced. The 'Machine Calculator' page corresponds to Task 1, 
+            the 'Graph' page corresponds to Task 2 and the 'Terminal' page corresponds to Task 3.</p>
+            <p>
+                <i>The Terminal endpoint is not a fully featured terminal. To test the bash script with custom configuration options 
+                you will have to run it locally.</i>
+            </p>
+           
+                If you are running this UI locally, make sure that the node server is running for the Terminal view, and that 
+                the flask app is running for the Machine calculator view.
+                <ul>
+                <li>To start the node server, navigate to the <code>node-server</code>
+                subdirectory and run <code>npm install && node server.js</code>.</li>
+                
+                <li>To start the flask server, you will have to first create a virtual
+                environment and install the project. Instructions on this can be found in the 
+                <a href="https://github.com/calstevemart/embl-ebi-technical-test">Readme.md</a>. Once you have installed 
+                the project and your venv is active, run <code>python app.py</code></li>
+            </ul>
+        
+        </div>
+    </div>
+</div>

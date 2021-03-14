@@ -3,10 +3,10 @@
     <div class="card rounded-0">
         <div class="card-header ">
             <div class="row">
-                <div class="col-2 pt-2 ">
-                    Spectra Graph
+                <div class="col-4 pt-2 ">
+                    <b>Task 2: Spectra Graph</b>
                 </div>
-                <div class="col-10">
+                <div class="col-8">
                     <ul class="nav nav-tabs border-0 justify-content-end">
                         <li *ngFor="let option of graphConfig.configOptions">
                             <a
@@ -20,6 +20,12 @@
         </div>
         <div class="card-body">
             <app-spectra-graph [config]="graphConfig" [trigger]="trigger"></app-spectra-graph>
+            <div  class="alert alert-warning" role="alert">
+                If no data appears in the graph, it may be because the target data is currently inaccessible server side.
+                Check <a href="https://www.ebi.ac.uk/metabolights/webservice/compounds/spectra/10935/json">Data 1</a> &
+                 <a href="https://www.ebi.ac.uk/metabolights/webservice/beta/spectra/MTBLC15355/CCMSLIB00000578035">Data 2</a>
+                 to see if the data itself is viewable.
+              </div>
         </div>
     </div>
 </div>

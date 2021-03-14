@@ -6,6 +6,11 @@ export const routes: Routes = [
     path: '',
     children: [
       {
+        path: '',
+        redirectTo: 'home',
+        pathMatch: 'full',
+      },
+      {
         path: 'graphs',
         loadChildren: () =>
           import('./core/features/graphs/graphs.module').then(
@@ -18,6 +23,18 @@ export const routes: Routes = [
           import('./core/features/terminal/terminal.module').then(
             (m) => m.TerminalModule
           ),
+      },
+      {
+        path: 'machines',
+        loadChildren: () =>
+          import('./core/features/machines/machines.module').then(
+            (m) => m.MachinesModule
+          ),
+      },
+      {
+        path: 'home',
+        loadChildren: () =>
+          import('./core/features/home/home.module').then((m) => m.HomeModule),
       },
     ],
   },

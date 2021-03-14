@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   terminalServerBaseUrl: 'http://localhost:3000/',
+  machineCalculatorServerBaseUrl: 'http://localhost:5000/',
 };
 
 /*
