@@ -13,4 +13,8 @@ export class TerminalService {
   getStatus() {
     return this.http.get(this.terminalServerUrl);
   }
+
+  postCommand(command?: any) {
+    return this.http.post(this.terminalServerUrl + 'sanitise', command);
+  }
 }

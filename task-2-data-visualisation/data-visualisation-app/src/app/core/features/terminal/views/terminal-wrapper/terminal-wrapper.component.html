@@ -12,7 +12,27 @@
             </div>
         </div>
         <div class="card-body">
-            <app-terminal-shell></app-terminal-shell>
+            <div class="mb-3" >
+                This is an <b>approximated</b> terminal environment. It will allow you to run certain whitelisted commands.
+                Any commands not already enabled by the system will fail by design.
+                It is not possible to supply a new file via the terminal interface.
+                Due to a quirk with shell.js trimming input characters from a flag, The only command structure that will work in this terminal is 
+                <code> ./sanitise.sh -i "string to sanitise" </code>. The -c flag will not be  processed correctly by the shelljs.exec command.
+                <br>
+                <br>
+                If you are running the UI locally,  make sure the node server is running by running <code>node server.js</code> in the node-server directory.
+                <br>
+                <br>
+                <b>To use the bash script fully featured you will have to run it locally.</b> Follow the instructions in the 
+                <a href="https://github.com/calstevemart/embl-ebi-technical-test">readme.md </a>for Task3, which detail how to make the bash script 
+                executable and the parameters to run it.
+            </div>
+            <div *ngIf="warningText !== ''" class="alert alert-warning" role="alert">
+                {{warningText}}
+              </div>
+            <app-terminal-shell
+             [terminalResult]="serverResponse"
+             (newCommandEvent)="processCommand($event)"></app-terminal-shell>
         </div>
     </div>
 </div>
