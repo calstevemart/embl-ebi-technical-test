@@ -1,6 +1,14 @@
 # embl-ebi-technical-test
 A repo to house my solutions to the three technical tests set by the embl-ebi.
 
+The solution to all 3 tasks can be viewed on the Ui housed in task-2-data-visualisation. If the ui is viewed locally, you will have to start the flask server for the machine resource calculator, and the node server for the bash script to run on. Note: The terminal view in the UI does not feature a fully featured terminal. **In order to run the bash script with the config flag enabled, you will have to run the bash script locally.** More information on task 3 is viewable in the UI.
+
+All solutions also work individually, without needing the UI (with the exception of task2, as the graphs are housed in the UI).
+
+Start the node server by navigating to the `node-server` directory and running `npm install && node server.js`.
+
+Start the flask server by first following the installation steps in the Task 1 section below, and then run `python app.py` while in your virtual environment in the task-1 project directory.
+
 ## Task 1 - Machine Resource Allocation
 The solution to the first task was completed in python. It can be found in `embl-ebi-technical-test/task-1-machine-calculation/`. 
 It requires a virtual environment to run, as it makes use of several 3rd party packages.
