@@ -1,7 +1,7 @@
 # embl-ebi-technical-test
 A repo to house my solutions to the three technical tests set by the embl-ebi.
 
-The solution to all 3 tasks can be viewed on the Ui housed in task-2-data-visualisation. If the ui is viewed locally, you will have to start the flask server for the machine resource calculator, and the node server for the bash script to run on. Note: The terminal view in the UI does not feature a fully featured terminal. **In order to run the bash script with the config flag enabled, you will have to run the bash script locally.** More information on task 3 is viewable in the UI.
+The solution to all 3 tasks can be viewed on the UI housed in task-2-data-visualisation. If the UI is viewed locally, you will have to start the flask server for the machine resource calculator, and the node server for the bash script to run on. Note: The terminal view in the UI does not feature a fully featured terminal. **In order to run the bash script with the config flag enabled, you will have to run the bash script locally.** More information on task 3 is viewable in the Task 3 section.
 
 All solutions also work individually, without needing the UI (with the exception of task2, as the graphs are housed in the UI).
 
@@ -45,3 +45,6 @@ You can pass a config file of your choosing to the script, `rules.txt` is suppli
 The structure of a config file goes like so:
 `character_to_replace replacement string` with each pair on a new line, with each element in a character/replacement pair separated by a space. It is important that this space is
 present between each character/replacement pair, as whitespace is the delimiter on which the script splits up each line in order to perform replacement.
+
+### UI Terminal
+The instructions above only relate to running the bash script locally. In the UI there is an approximated terminal environment, where you can run the bash script but *not* with the `-c rules.txt` flag, owing to a quirk with the shelljs library I was unable to overcome in time.
