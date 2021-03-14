@@ -1,6 +1,17 @@
 # embl-ebi-technical-test
 A repo to house my solutions to the three technical tests set by the embl-ebi.
 
+*A live version of the UI with all 3 task solutions can be viewed here:* http://embl-ebi-ui.s3-website.eu-west-2.amazonaws.com/home This UI utilises AWS services for hosting. This is intended to be an ease of use solution, and all tasks can still be run individually as per the instructions below.
+
+## Local UI
+The solution to all 3 tasks can be viewed on the UI housed in task-2-data-visualisation. You will have to start the flask server for the machine resource calculator, and the node server for the bash script to run on. Note: The terminal view in the UI does not feature a fully featured terminal. **In order to run the bash script with the config flag enabled, you will have to run the bash script locally.** More information on task 3 is viewable in the Task 3 section.
+
+All solutions also work individually, without needing the UI (with the exception of task2, as the graphs are housed in the UI).
+
+Start the node server by navigating to the `node-server` directory and running `npm install && node server.js`.
+
+Start the flask server by first following the installation steps in the Task 1 section below, and then run `python app.py` while in your virtual environment in the task-1 project directory.
+
 ## Task 1 - Machine Resource Allocation
 The solution to the first task was completed in python. It can be found in `embl-ebi-technical-test/task-1-machine-calculation/`. 
 It requires a virtual environment to run, as it makes use of several 3rd party packages.
@@ -14,6 +25,8 @@ which are `test_1 = [(0, 3), (15, 18), (17, 20), (2, 10)]
 test_2 = [(7, 9), (2, 4)]`. To test the program with different time spans, you can alter (or add more like) these variables in main.py
 There are also some unit tests written using [pytest](https://docs.pytest.org/en/stable/) that can be run by running `pytest` in the project directory. I also made use of the [black](https://black.readthedocs.io/en/stable/)
 formatter to format the project.
+### Flask App
+This task can also be run as a flask app. By running `python app.py` in the venv, you will start the flask server. This server can be interacted with on the task-2 UI, in the Machine Calculator view. You can also make curl request, or naviagate to 127.0.0.1 and interact with swagger to test posting data.
 
 ## Task 2 - Data Visualisation
 For the second task of visualising sets of input spectrography data, I opted to create an angular webapp. It can be found in `embl-ebi-technical-test/task-2-data-visualisation`.
@@ -37,3 +50,6 @@ You can pass a config file of your choosing to the script, `rules.txt` is suppli
 The structure of a config file goes like so:
 `character_to_replace replacement string` with each pair on a new line, with each element in a character/replacement pair separated by a space. It is important that this space is
 present between each character/replacement pair, as whitespace is the delimiter on which the script splits up each line in order to perform replacement.
+
+### UI Terminal
+The instructions above only relate to running the bash script locally. In the UI there is an approximated terminal environment, where you can run the bash script but *not* with the `-c rules.txt` flag, owing to a quirk with the shelljs library I was unable to overcome in time.
