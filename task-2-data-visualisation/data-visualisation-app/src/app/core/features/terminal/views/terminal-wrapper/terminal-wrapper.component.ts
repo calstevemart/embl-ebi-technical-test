@@ -8,15 +8,20 @@ import { TerminalService } from 'src/app/core/services/terminal.service';
   styleUrls: ['./terminal-wrapper.component.less'],
 })
 export class TerminalWrapperComponent implements OnInit {
+  /**Response from the server after command handling */
   serverResponse: string = '';
+  /**Warning text to tell the user off for bad input */
   warningText = '';
 
   constructor(private terminalService: TerminalService) {}
 
-  ngOnInit(): void {
-    this.pingTerminal();
-  }
+  ngOnInit(): void {}
 
+  /**
+   * Process a command and send it. Currently unfinished as need some complex logic
+   * to handle whitespace in input strings.
+   * @param $event - a command as a string
+   */
   processCommand($event: string) {
     console.log($event);
     let command = {};
@@ -49,6 +54,11 @@ export class TerminalWrapperComponent implements OnInit {
     }
   }
 
+  /**
+   * Build a 'sanitise' command. This is currently not fully implemented, as i need
+   * some complex logic for whitespace handling in the input string.
+   * @param constituentArray - The array containing all the constituent parts of the command.
+   */
   buildSanitiseCommand(constituentArray: string[]) {
     let baseCommand = constituentArray[0];
     let flags: FlagObject[] = [];
@@ -73,12 +83,14 @@ export class TerminalWrapperComponent implements OnInit {
     };
   }
 
+  /**Ping the 'terminal' server */
   pingTerminal() {
-    this.terminalService.getStatus().subscribe((resp) => {
-      console.log('Server says: ' + resp);
-    });
+    this.terminalService.getStatus().subscribe((resp) => {});
   }
 
+  /**Post a command to the server
+   * @param command - a command object
+   */
   postCommand(command?: any) {
     this.terminalService.postCommand(command).subscribe((resp) => {
       this.serverResponse = resp.toString();

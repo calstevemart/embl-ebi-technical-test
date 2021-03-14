@@ -8,10 +8,12 @@ import { MachineCalculatorService } from 'src/app/core/services/machine-calculat
 })
 export class MachineCalculatorWrapperComponent implements OnInit {
   constructor(private machineService: MachineCalculatorService) {}
+  /**Result from the flask api */
   serviceResult = '';
 
   ngOnInit(): void {}
 
+  /**Triggered when the user hits send. Sends the tuple set to the api. */
   handleNewTuple($event: string) {
     let req = {
       body: $event,

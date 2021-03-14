@@ -18,18 +18,21 @@ import { Subject } from 'rxjs';
 })
 export class TerminalShellComponent
   implements OnInit, AfterViewInit, OnChanges {
+  /**View child to access ngterminal */
   @ViewChild('term', { static: true })
   child!: NgTerminal;
-
+  /**Event emitter to send new command to parent component */
   @Output()
   newCommandEvent = new EventEmitter<string>();
-
+  /**Result from node server */
   @Input() terminalResult: string = '';
-
+  /**temp variable to store the last returnedvalue from the server */
   lastKnownTerminalResult = '';
+  /**Write subject used to write server responses to terminal. */
   writeSubject = new Subject<string>();
-
+  /**Temp variable that builds up a new command char-by-char */
   tempCommand = '';
+  /**Finalised command */
   command: any = '';
 
   constructor() {}
@@ -37,14 +40,16 @@ export class TerminalShellComponent
   ngOnInit(): void {}
 
   ngOnChanges(): void {
-    console.log('hit shell on changes');
     this.write();
     this.lastKnownTerminalResult = this.terminalResult;
   }
 
+  /**
+   * Afterview init. keyEventInput is hit every time the user enters a character.
+   * The callback is used to construct a command.
+   */
   ngAfterViewInit() {
     this.child.keyEventInput.subscribe((e) => {
-      console.log('keyboard event:' + e.domEvent.keyCode + ', ' + e.key);
       if (
         e.key !== ' [A' &&
         e.key !== ' [B' &&
@@ -79,6 +84,9 @@ export class TerminalShellComponent
     });
   }
 
+  /**
+   * Used to write the servers response to the ngterminal.
+   */
   write() {
     if (
       this.terminalResult !== '' &&
