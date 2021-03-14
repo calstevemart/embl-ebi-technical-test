@@ -21,7 +21,12 @@ app.post('/sanitise', (req, res) => {
         "cat",
         "echo"
     ]
-    if (whitelist.includes(req.body.command.split("")[0])) {
+    console.log(req.body.command)
+    firstToken = req.body.command.split(" ")[0]
+    console.log(firstToken)
+    flag = whitelist.includes(firstToken)
+    console.log(flag)
+    if (flag) {
         // Build command from flags
         command = `${req.body.command}`;
         if (req.body.flags.length > 0) {
